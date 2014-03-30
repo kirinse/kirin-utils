@@ -1,0 +1,31 @@
+{
+  "family": "kirin",
+  "name": "utils",
+  "version": "1.0.0",
+  "description": "kirin utils module.",
+  "homepage": "https://github.com/darkmoon/utils",
+  "author": "Floyd",
+  "maintainers": [
+    "Floyd"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/darkmoon/utils.git"
+  },
+  "bugs": {
+    "url": ""
+  },
+  "keywords": [],
+  "licenses": "MIT",
+  "spm": {
+    "output": [
+      "kstring.js",
+      "karray.js"
+    ],
+    "alias": {
+      "class":"arale/class/2.0.0/class"
+    },
+    "devAlias": {},
+    "engines": {}
+  }
+}

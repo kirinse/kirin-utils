@@ -1,0 +1,1 @@
+define("kirin/utils/1.0.0/helper",[],function(a,b){b.augment=function(a,b){for(methodName in b)b.hasOwnProperty(methodName)&&(a.prototype.hasOwnProperty(methodName)||(a.prototype[methodName]=b[methodName]))},b.dblPrototype=function(a,b){var c=function(){};c.prototype=a;var d=function(){b&&b.apply(this,arguments),this[0]=arguments[0]};return d.prototype=new c,d}});

@@ -1,0 +1,353 @@
+<!DOCTYPE HTML>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8">
+    <title>kirin/utils - Demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="nico 0.4.7" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link type="image/x-icon" href="../static/css/favicon.ico" rel="icon">
+    <link rel="stylesheet" href="../static/css/normalize.css" />
+    <link rel="stylesheet" href="../static/css/site.css" />
+    <link rel="stylesheet" href="../static/css/solarized.css" />
+<style>
+/* alipay iconfont */
+@font-face {
+  font-family: "rei";
+  src: url("https://i.alipayobjects.com/common/fonts/rei.eot?20130423"); /* IE9 */
+  src: url("https://i.alipayobjects.com/common/fonts/rei.eot?20130423#iefix") format("embedded-opentype"), /* IE6-IE8 */
+  url("https://i.alipayobjects.com/common/fonts/rei.woff?20130423") format("woff"), /* chrome 6+、firefox 3.6+、Safari5.1+、Opera 11+ */
+  url("https://i.alipayobjects.com/common/fonts/rei.ttf?20130423")  format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+ */
+    url("https://i.alipayobjects.com/common/fonts/rei.svg?20130423#rei") format("svg"); /* iOS 4.1- */
+}
+.iconfont {
+  font-family:"rei";
+  font-style: normal;
+  font-weight: normal;
+  cursor: default;
+  -webkit-font-smoothing: antialiased;
+}
+</style>
+
+<script src="http://assets.spmjs.org/??
+seajs/seajs/2.2.0/sea.js,
+seajs/seajs-combo/1.0.1/seajs-combo.js,
+seajs/seajs-style/1.0.2/seajs-style.js,
+seajs/seajs-health/0.1.0/seajs-health.js,
+jquery/jquery/1.7.2/jquery.js"></script>
+<script>
+  (function() {
+
+  var query = location.search.substring(1).split('&');
+  var srcdir = 'src';
+
+  if (contain(query, 'dist')) {
+    srcdir = 'dist';
+    
+      seajs.use("../dist/karray.js");
+      seajs.use("../dist/kstring.js");
+  } else if (contain(query, 'cov')) {
+    srcdir = 'src-cov';
+  }
+
+  seajs.config({
+    alias: {
+      "$": 'jquery/jquery/1.7.2/jquery',
+      "$-debug": 'jquery/jquery/1.7.2/jquery-debug',
+      "jquery": 'jquery/jquery/1.7.2/jquery',
+      "jquery-debug": 'jquery/jquery/1.7.2/jquery-debug',
+      expect: "gallery/expect/0.2.0/expect",
+      puerh: "popomore/puerh/0.1.0/puerh",
+      handlebars: "gallery/handlebars/1.0.2/handlebars",
+      sinon: "gallery/sinon/1.6.0/sinon"
+    },
+    map: [function(uri) {
+      // resolve id
+      var m = uri.match(/kirin\/utils\/1.0.0\/(.*)/);
+      if (m) {
+        return resolve(m[1]);
+      }
+      return uri;
+    }, function(uri) {
+      var m = uri.match(/([A-Za-z\-]+)\/[A-Za-z\-]+\/[\.0-9]+\/.+/);
+      if (m && /^alipay$/.test(m[1])) {
+        return 'http://yuan.alipay.im/assets/' + m[0];
+      }
+      return uri;
+    }],
+    comboExcludes: {test: function(uri) {
+      return uri.indexOf('http://assets.spmjs.org') === -1;
+    }}
+  });
+
+  function resolve(file) {
+    if (contain(query, 'debug')) {
+      if (file.indexOf('-debug') === -1) {
+        file = file.replace(/\.(\w+)$/, '-debug.$1');
+      }
+    }
+    return seajs.resolve("../" + srcdir + "/" + file + '#');
+  }
+
+  function contain(arr, value) {
+    for (var i in arr) {
+      if (arr[i] === value) {
+        return true;
+      }
+    }
+    return false;
+  }
+      seajs.config({ alias: {"class":"arale/class/2.0.0/class"}});
+    seajs.use([]);
+      seajs.config({ alias: {}});
+
+    seajs.config({alias: {
+      "$-debug": 'jquery/jquery/1.7.2/jquery-debug'
+        ,"helper": resolve("helper.js")
+        ,"karray": resolve("karray.js")
+        ,"kstring": resolve("kstring.js")
+    }});
+
+    // 加载依赖的 css 文件
+    var cssArray = [];
+    cssArray.push('arale/class/2.0.0/class');
+    for (var i=0; i<cssArray.length; i++) {
+      if (cssArray[i].indexOf('.css') < 0) {
+        cssArray.splice(i, 1);
+      }
+    }
+    seajs.use(cssArray);
+  })();
+</script>
+    <script src="../static/js/site.js"></script>
+    <!--[if lt IE 9]>
+    <script src="../static/js/html5shiv.js"></script>
+    <![endif]-->
+    
+  </head>
+  <body class="">
+    <div id="body-wrapper">
+      <aside id="sidebar-wrapper">
+      <h1>
+          <a href="../">Utils</a><sup class="package-root"><a href="/">kirin</a></sup>
+      </h1>
+        <p class="version">当前版本：<a href="">1.0.0</a></p>
+        <p class="description">kirin utils module.</p>
+        <p class="keywords" style="display: none;"></p>
+        <a class="source" href="git://github.com/darkmoon/utils" target="_blank">View the Project</a>
+        <ul id="navigation" role="navigation">
+          <li><a href="../">文档</a></li>
+          <li><a href="index.html">演示</a></li>
+          <li><a href="../history.html">历史</a></li>
+          <li><a class="test-link" href="../tests/runner.html" target="_blank">用例</a></li>
+          <li><a class="issue-link" href="" target="_blank">讨论</a></li>
+        </ul>
+        
+<ul id="module-output">
+  <li class="module-multiable" title="本组件共有2个子模块">文件</li>
+    <li><a data-file="kstring.js" target="_blank" href="http://assets.spmjs.org/kirin/utils/1.0.0/kstring.js">■</a></li>
+    <li><a data-file="karray.js" target="_blank" href="http://assets.spmjs.org/kirin/utils/1.0.0/karray.js">■</a></li>
+</ul>
+<div id="output-card">
+    <h3>kirin/utils/1.0.0/<a target="_blank" id="output-file"></a></h3>
+    <p>这是本模块的输出文件，请复制以上 ID 进行使用。</p>
+</div>
+
+      </aside>
+      <div id="content-wrapper">
+        <div id="content">
+<article class="hentry">
+  <h1 class="entry-title">Demo</h1>
+  <div class="entry-content">
+    <h2 id="normal-usage">Normal usage<a href="#normal-usage" class="anchor">¶</a></h2><!-- seajs.use(['kstring'], function(KString) {
+  $S = KString;
+
+  console.log($S("1em").toInt());
+  console.log($S("  this is a example").trimLeft());
+  console.log($S("  this is a example   ").trimRight());
+  console.log($S(" . 我 this is a example").urlEncode());
+  console.log($S("#123").hexToRgb());
+  console.log($S("rgb(17,34,51)").rgbToHex());
+  console.log($S("rgb(17,34,51)").parseColor());
+  var str = $S("<script>var a = 1; alert(a);<\/script> this is a test");
+  console.log(str.stripScripts()); // alert(1) then return "this is a test"
+  str.stripScripts(function(sc,txt){
+    console.log(sc) //return "var a = 1; alert(a)"
+    console.log(txt) //return "this is a test"
+  });
+  console.log($S("%20.%20%E6%88%91%20this%20is%20a%20example").urlDecode());
+  console.log($S("<html><body>Go Go").escapeHTML());
+  var str = $S("abc");
+  console.log(str.pad(7,"*")); //return "****abc"
+  console.log(str.pad(7,"*",true)); //return "abc***"
+  var myString = $S("{subject} is {property_1} and {property_2}.");
+  var myObject = {
+    subject: 'Jack Bauer',
+    property_1: 'our lord',
+    property_2: 'savior'
+  };
+  console.log(myString.substitute(myObject)); //Jack Bauer is our lord and savior
+  var str = $S("&lt;html&gt;&lt;body&gt;Go Go");
+  console.log(str.unescapeHTML()); //return "<html><body>Go Go"
+}); -->
+
+<script>seajs.use(['karray','kstring'], function(KArray, KString) {
+  $A = KArray;
+  $S = KString;
+  var arr = $A(['apple', 'banana', 'lemon']);
+  arr.each(function(item, index){
+    console.log(index + " = " + item);
+  });
+  var arr = $A([10,4,25,100])
+  var areAllBigEnough = arr.every(function(item, index){
+   return item > 20;
+  }); //return false
+  console.log(areAllBigEnough);
+  var arr = $A([10,4,25,100]);
+  console.log(arr.filter(function(item, index){
+   return item > 20;
+  }).toString()); //return [25,100];
+  var arr = $A([null, 1, 0, true, false, "foo", undefined, ""]);
+  console.log(arr.clean().toString()); //return [1,0,true,false,"foo",""];
+  var arr = $A([1, 2, 3]);
+  console.log(arr.map(function(item,index){
+    return item*2;
+  }).toString()); // [2,4,6]
+     var arr = $A([10, 25, 31]);
+     var isAnyBigEnough = arr.some(function(item,index){
+      return item > 30;
+     }); // return true
+  console.log(isAnyBigEnough);
+     var vals  = $A(['Cow', 'Pig', 'Dog', 'Cat']);
+     var keys = $A(['Moo', 'Oink', 'Woof', 'Miao']);
+     console.log(keys.associate(vals)); //returns {'Cow': 'Moo', 'Pig': 'Oink', 'Dog': 'Woof', 'Cat': 'Miao'}
+     var arr = $A(['apple', 'lemon', 'banana']);
+     console.log(arr.indexOf("lemon")); //return 1
+     console.log(arr.indexOf("lemin", 4)); //return -1
+     var arr = $A(['a', 'b', 'c']);
+     console.log(arr.contains('a')); //return true
+     var arr = $A(['a', 'b', 'c']);
+     console.log(arr.extend(['d','c'])); //return ['a', 'b', 'c', 'd', 'c']
+     var arr = $A(['a', 'b', 'c']);
+     console.log(arr.last()); //return 'c'
+     var arr = $A(['a', 'b', 'c']);
+     console.log(arr.random()); //return 其中的某一项
+     var arr = $A(['a', 'b', 'c']);
+     console.log(arr.include('c')); //return ['a', 'b', 'c']
+     console.log(arr.include('d')); //return ['a', 'b', 'c', 'd']
+     var arr = $A(['a', 'b', 'c']);
+     console.log(arr.combine(['d','c'])); //return ['a', 'b', 'c', 'd']
+     var arr = $A(['a', 'b', 'c', 'a']);
+     console.log(arr.erase('a')); //return ['b', 'c']
+     var arr = $A(['a', 'b', 'c', 'a']);
+     console.log(arr.empty()); //return []
+     var myArray = $A([1,2,3,[4,5, [6,7]], [[[8]]]]);
+     var newArray = myArray.flatten(); //newArray is [1,2,3,4,5,6,7,8]
+     console.log(newArray);
+     console.log($A(['11','22','33']).hexToRgb());
+     console.log($A([17,34,51]).rgbToHex()); //returns "#112233"
+     console.log($A([17,34,51]).rgbToHex(true)); //returns ['11','22','33']
+     console.log($A([17,34,51,0]).rgbToHex()); //returns "transparent"
+     console.log($A([1,2,3,4,5,6,7,8,9,10]).inject(0, function(acc, n) {
+       return acc + n;
+     })); //return 55     (1 到 10 的总和)
+     console.log($A([2,3,4,5]).inject(1, function(acc, n) {
+       return acc * n;
+     }));  // return 120 (5 的阶乘)
+     console.log($A(['hello', 'world', 'this', 'is', 'nice']).inject([],function(array, value, index) {
+       if (0 == index % 2)
+         array.push(value);
+       return array;
+     })); //return     ['hello', 'this', 'nice']
+     var arr = $A(['a', 'b', 'c']);
+     arr.remove('b');
+     console.log(arr.valueOf());
+});</script><div class="highlight"><pre><code class="javascript">seajs.use([<span class="string">'kirin/utils/1.0.0/karray'</span>,<span class="string">'kirin/utils/1.0.0/kstring'</span>], <span class="keyword">function</span>(KArray, KString) {
+  $A = KArray;
+  $S = KString;
+  <span class="keyword">var</span> arr = $A([<span class="string">'apple'</span>, <span class="string">'banana'</span>, <span class="string">'lemon'</span>]);
+  arr.each(<span class="keyword">function</span>(item, index){
+    console.log(index + <span class="string">" = "</span> + item);
+  });
+  <span class="keyword">var</span> arr = $A([<span class="number">10</span>,<span class="number">4</span>,<span class="number">25</span>,<span class="number">100</span>])
+  <span class="keyword">var</span> areAllBigEnough = arr.every(<span class="keyword">function</span>(item, index){
+   <span class="keyword">return</span> item &gt; <span class="number">20</span>;
+  }); <span class="comment">//return false</span>
+  console.log(areAllBigEnough);
+  <span class="keyword">var</span> arr = $A([<span class="number">10</span>,<span class="number">4</span>,<span class="number">25</span>,<span class="number">100</span>]);
+  console.log(arr.filter(<span class="keyword">function</span>(item, index){
+   <span class="keyword">return</span> item &gt; <span class="number">20</span>;
+  }).toString()); <span class="comment">//return [25,100];</span>
+  <span class="keyword">var</span> arr = $A([<span class="literal">null</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="literal">true</span>, <span class="literal">false</span>, <span class="string">"foo"</span>, <span class="literal">undefined</span>, <span class="string">""</span>]);
+  console.log(arr.clean().toString()); <span class="comment">//return [1,0,true,false,"foo",""];</span>
+  <span class="keyword">var</span> arr = $A([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]);
+  console.log(arr.map(<span class="keyword">function</span>(item,index){
+    <span class="keyword">return</span> item*<span class="number">2</span>;
+  }).toString()); <span class="comment">// [2,4,6]</span>
+     <span class="keyword">var</span> arr = $A([<span class="number">10</span>, <span class="number">25</span>, <span class="number">31</span>]);
+     <span class="keyword">var</span> isAnyBigEnough = arr.some(<span class="keyword">function</span>(item,index){
+      <span class="keyword">return</span> item &gt; <span class="number">30</span>;
+     }); <span class="comment">// return true</span>
+  console.log(isAnyBigEnough);
+     <span class="keyword">var</span> vals  = $A([<span class="string">'Cow'</span>, <span class="string">'Pig'</span>, <span class="string">'Dog'</span>, <span class="string">'Cat'</span>]);
+     <span class="keyword">var</span> keys = $A([<span class="string">'Moo'</span>, <span class="string">'Oink'</span>, <span class="string">'Woof'</span>, <span class="string">'Miao'</span>]);
+     console.log(keys.associate(vals)); <span class="comment">//returns {'Cow': 'Moo', 'Pig': 'Oink', 'Dog': 'Woof', 'Cat': 'Miao'}</span>
+     <span class="keyword">var</span> arr = $A([<span class="string">'apple'</span>, <span class="string">'lemon'</span>, <span class="string">'banana'</span>]);
+     console.log(arr.indexOf(<span class="string">"lemon"</span>)); <span class="comment">//return 1</span>
+     console.log(arr.indexOf(<span class="string">"lemin"</span>, <span class="number">4</span>)); <span class="comment">//return -1</span>
+     <span class="keyword">var</span> arr = $A([<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>]);
+     console.log(arr.contains(<span class="string">'a'</span>)); <span class="comment">//return true</span>
+     <span class="keyword">var</span> arr = $A([<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>]);
+     console.log(arr.extend([<span class="string">'d'</span>,<span class="string">'c'</span>])); <span class="comment">//return ['a', 'b', 'c', 'd', 'c']</span>
+     <span class="keyword">var</span> arr = $A([<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>]);
+     console.log(arr.last()); <span class="comment">//return 'c'</span>
+     <span class="keyword">var</span> arr = $A([<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>]);
+     console.log(arr.random()); <span class="comment">//return 其中的某一项</span>
+     <span class="keyword">var</span> arr = $A([<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>]);
+     console.log(arr.include(<span class="string">'c'</span>)); <span class="comment">//return ['a', 'b', 'c']</span>
+     console.log(arr.include(<span class="string">'d'</span>)); <span class="comment">//return ['a', 'b', 'c', 'd']</span>
+     <span class="keyword">var</span> arr = $A([<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>]);
+     console.log(arr.combine([<span class="string">'d'</span>,<span class="string">'c'</span>])); <span class="comment">//return ['a', 'b', 'c', 'd']</span>
+     <span class="keyword">var</span> arr = $A([<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'a'</span>]);
+     console.log(arr.erase(<span class="string">'a'</span>)); <span class="comment">//return ['b', 'c']</span>
+     <span class="keyword">var</span> arr = $A([<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'a'</span>]);
+     console.log(arr.empty()); <span class="comment">//return []</span>
+     <span class="keyword">var</span> myArray = $A([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,[<span class="number">4</span>,<span class="number">5</span>, [<span class="number">6</span>,<span class="number">7</span>]], [[[<span class="number">8</span>]]]]);
+     <span class="keyword">var</span> newArray = myArray.flatten(); <span class="comment">//newArray is [1,2,3,4,5,6,7,8]</span>
+     console.log(newArray);
+     console.log($A([<span class="string">'11'</span>,<span class="string">'22'</span>,<span class="string">'33'</span>]).hexToRgb());
+     console.log($A([<span class="number">17</span>,<span class="number">34</span>,<span class="number">51</span>]).rgbToHex()); <span class="comment">//returns "#112233"</span>
+     console.log($A([<span class="number">17</span>,<span class="number">34</span>,<span class="number">51</span>]).rgbToHex(<span class="literal">true</span>)); <span class="comment">//returns ['11','22','33']</span>
+     console.log($A([<span class="number">17</span>,<span class="number">34</span>,<span class="number">51</span>,<span class="number">0</span>]).rgbToHex()); <span class="comment">//returns "transparent"</span>
+     console.log($A([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">10</span>]).inject(<span class="number">0</span>, <span class="keyword">function</span>(acc, n) {
+       <span class="keyword">return</span> acc + n;
+     })); <span class="comment">//return 55     (1 到 10 的总和)</span>
+     console.log($A([<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]).inject(<span class="number">1</span>, <span class="keyword">function</span>(acc, n) {
+       <span class="keyword">return</span> acc * n;
+     }));  <span class="comment">// return 120 (5 的阶乘)</span>
+     console.log($A([<span class="string">'hello'</span>, <span class="string">'world'</span>, <span class="string">'this'</span>, <span class="string">'is'</span>, <span class="string">'nice'</span>]).inject([],<span class="keyword">function</span>(array, value, index) {
+       <span class="keyword">if</span> (<span class="number">0</span> == index % <span class="number">2</span>)
+         array.push(value);
+       <span class="keyword">return</span> array;
+     })); <span class="comment">//return     ['hello', 'this', 'nice']</span>
+     <span class="keyword">var</span> arr = $A([<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>]);
+     arr.remove(<span class="string">'b'</span>);
+     console.log(arr.valueOf());
+});</code></pre></div>
+  </div>
+</article>
+</div>
+      </div>
+      
+    </div>
+    <div id="footer-wrapper">
+      <footer>
+        <p class="powered"><a href="https://spmjs.org">spmjs</a> •
+<a href="http://seajs.org">Sea.js</a> •
+<a href="https://github.com/spmjs/nico-cmd">nico-cmd</a> •
+<a href="http://lab.lepture.com/nico/">nico</a>
+        </p>
+      </footer>
+    </div>
+  </body>
+</html>
